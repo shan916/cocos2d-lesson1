@@ -10,10 +10,16 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 
+// Import touch handling interface
+#import "CCTouchDispatcher.h"
+
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
 #pragma mark - HelloWorldLayer
+
+CCSprite *seeker1;
+CCSprite *cocosGuy;
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
@@ -34,76 +40,103 @@
 	return scene;
 }
 
+// set up the menus
+- (void) setUpMenus
+{
+    // create some menu items
+    CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"myfirstbutton.png"
+                                                        selectedImage:@"myfirstbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingOne:)];
+    
+    CCMenuItemImage *menuItem2 = [CCMenuItemImage itemWithNormalImage:@"mysecondbutton.png"
+                                                        selectedImage:@"mysecondbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingTwo:)];
+    
+    CCMenuItemImage *menuItem3 = [CCMenuItemImage itemWithNormalImage:@"mythirdbutton.png"
+                                                        selectedImage:@"mythirdbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingThree:)];
+    
+    // create a menu and add your menu items to it
+    CCMenu *myMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, nil];
+    
+    // arrange the menu items vertically
+    [myMenu alignItemsVertically];
+    
+    // add the menu to your scene
+    [self addChild:myMenu];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super init]) ) {
-		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-		
-		
-		
-		//
-		// Leaderboards and Achievements
-		//
-		
-		// Default font size will be 28 points.
-		[CCMenuItemFont setFontSize:28];
-		
-		// to avoid a retain-cycle with the menuitem and blocks
-		__block id copy_self = self;
-		
-		// Achievement Menu Item using blocks
-		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-			
-			
-			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-			achivementViewController.achievementDelegate = copy_self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:achivementViewController animated:YES];
-			
-			[achivementViewController release];
-		}];
-		
-		// Leaderboard Menu Item using blocks
-		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-			
-			
-			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-			leaderboardViewController.leaderboardDelegate = copy_self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-			
-			[leaderboardViewController release];
-		}];
-
-		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
-		
-		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
-		
-		// Add the menu to the layer
-		[self addChild:menu];
-
+	if( (self=[super init]) )
+    {
+		// create and initialize our seeker sprite, and add it to this layer
+        seeker1 = [CCSprite spriteWithFile:@"seeker.png"];
+        seeker1.position = ccp(50, 100);
+        [self addChild:seeker1];
+        
+        // do the same for the cocos2d guy, reusing the app icon as its image
+        cocosGuy = [CCSprite spriteWithFile:@"Icon.png"];
+        cocosGuy.position = ccp(200, 300);
+        [self addChild:cocosGuy];
+        
+        // schedule a repeating callback on every frame
+        [self schedule:@selector(nextFrame:)];
+        [self setUpMenus];
+        
+        self.touchEnabled = YES;
 	}
+    
 	return self;
+}
+
+- (void) registerWithTouchDispatcher
+{
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+// updates each frame
+- (void) nextFrame:(ccTime)dt
+{
+    seeker1.position = ccp(seeker1.position.x + 100*dt, seeker1.position.y);
+    if (seeker1.position.x > 480+32)
+    {
+        seeker1.position = ccp(-32, seeker1.position.y);
+    }
+}
+
+- (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    return YES;
+}
+
+- (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint location = [self convertTouchToNodeSpace: touch];
+    
+    [cocosGuy stopAllActions];
+    [cocosGuy runAction: [CCMoveTo actionWithDuration:1 position:location]];
+}
+
+- (void) doSomethingOne:(CCMenuItem *)menuItem
+{
+    NSLog(@"The first menu was called");
+}
+
+- (void) doSomethingTwo:(CCMenuItem *)menuItem
+{
+    NSLog(@"The second menu was called");
+}
+
+- (void) doSomethingThree:(CCMenuItem *)menuItem
+{
+    NSLog(@"The third menu was called");
 }
 
 // on "dealloc" you need to release all your retained objects
@@ -122,12 +155,12 @@
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 @end

@@ -141,6 +141,13 @@
 		74DB067F17C6E94D00BED9E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB067E17C6E94D00BED9E2 /* AppDelegate.m */; };
 		74DB068217C6E94D00BED9E2 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB068117C6E94D00BED9E2 /* HelloWorldLayer.m */; };
 		74DB068517C6E94D00BED9E2 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB068417C6E94D00BED9E2 /* IntroLayer.m */; };
+		74DB068C17C6EA5300BED9E2 /* seeker.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB068B17C6EA5300BED9E2 /* seeker.png */; };
+		74DB069317C724CA00BED9E2 /* myfirstbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB068D17C724CA00BED9E2 /* myfirstbutton.png */; };
+		74DB069417C724CA00BED9E2 /* myfirstbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB068E17C724CA00BED9E2 /* myfirstbutton_selected.png */; };
+		74DB069517C724CA00BED9E2 /* mysecondbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB068F17C724CA00BED9E2 /* mysecondbutton.png */; };
+		74DB069617C724CA00BED9E2 /* mysecondbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB069017C724CA00BED9E2 /* mysecondbutton_selected.png */; };
+		74DB069717C724CA00BED9E2 /* mythirdbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB069117C724CA00BED9E2 /* mythirdbutton.png */; };
+		74DB069817C724CA00BED9E2 /* mythirdbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 74DB069217C724CA00BED9E2 /* mythirdbutton_selected.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -425,6 +432,13 @@
 		74DB068117C6E94D00BED9E2 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		74DB068317C6E94D00BED9E2 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		74DB068417C6E94D00BED9E2 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		74DB068B17C6EA5300BED9E2 /* seeker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seeker.png; sourceTree = "<group>"; };
+		74DB068D17C724CA00BED9E2 /* myfirstbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myfirstbutton.png; sourceTree = "<group>"; };
+		74DB068E17C724CA00BED9E2 /* myfirstbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myfirstbutton_selected.png; sourceTree = "<group>"; };
+		74DB068F17C724CA00BED9E2 /* mysecondbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mysecondbutton.png; sourceTree = "<group>"; };
+		74DB069017C724CA00BED9E2 /* mysecondbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mysecondbutton_selected.png; sourceTree = "<group>"; };
+		74DB069117C724CA00BED9E2 /* mythirdbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mythirdbutton.png; sourceTree = "<group>"; };
+		74DB069217C724CA00BED9E2 /* mythirdbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mythirdbutton_selected.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +515,13 @@
 		74DB04ED17C6E94A00BED9E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				74DB068D17C724CA00BED9E2 /* myfirstbutton.png */,
+				74DB068E17C724CA00BED9E2 /* myfirstbutton_selected.png */,
+				74DB068F17C724CA00BED9E2 /* mysecondbutton.png */,
+				74DB069017C724CA00BED9E2 /* mysecondbutton_selected.png */,
+				74DB069117C724CA00BED9E2 /* mythirdbutton.png */,
+				74DB069217C724CA00BED9E2 /* mythirdbutton_selected.png */,
+				74DB068B17C6EA5300BED9E2 /* seeker.png */,
 				74DB04EE17C6E94A00BED9E2 /* Default.png */,
 				74DB04F017C6E94A00BED9E2 /* Default@2x.png */,
 				74DB04F217C6E94A00BED9E2 /* Default-568h@2x.png */,
@@ -942,6 +963,13 @@
 				74DB050117C6E94A00BED9E2 /* Icon@2x.png in Resources */,
 				74DB050417C6E94A00BED9E2 /* iTunesArtwork in Resources */,
 				74DB065D17C6E94D00BED9E2 /* ChangeLog in Resources */,
+				74DB068C17C6EA5300BED9E2 /* seeker.png in Resources */,
+				74DB069317C724CA00BED9E2 /* myfirstbutton.png in Resources */,
+				74DB069417C724CA00BED9E2 /* myfirstbutton_selected.png in Resources */,
+				74DB069517C724CA00BED9E2 /* mysecondbutton.png in Resources */,
+				74DB069617C724CA00BED9E2 /* mysecondbutton_selected.png in Resources */,
+				74DB069717C724CA00BED9E2 /* mythirdbutton.png in Resources */,
+				74DB069817C724CA00BED9E2 /* mythirdbutton_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,12 +1148,14 @@
 				GCC_PREFIX_HEADER = Lesson1/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"Lesson1/libs/kazmath/include\"";
 				INFOPLIST_FILE = Lesson1/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1139,12 +1169,14 @@
 				GCC_PREFIX_HEADER = Lesson1/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"Lesson1/libs/kazmath/include\"";
 				INFOPLIST_FILE = Lesson1/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
